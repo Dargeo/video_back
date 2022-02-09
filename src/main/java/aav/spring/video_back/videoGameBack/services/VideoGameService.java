@@ -16,4 +16,5 @@ public interface VideoGameService {
     VideoGame add(VideoGame videogame);
     VideoGame edit(VideoGame videogame);
     VideoGame delete(int id);
+    List<VideoGame> listByCategory(String category);
 }

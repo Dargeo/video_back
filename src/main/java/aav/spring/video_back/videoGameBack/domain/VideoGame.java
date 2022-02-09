@@ -33,4 +33,7 @@ public class VideoGame {
 
     @Column
     private int price;
+
+    @Column
+    private String pg;
 }

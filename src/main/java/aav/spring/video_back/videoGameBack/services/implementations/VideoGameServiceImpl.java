@@ -47,4 +47,10 @@ public class VideoGameServiceImpl implements VideoGameService {
         return videogame;
 
     }
+
+    @Override
+    public List<VideoGame> listByCategory(String category) {
+
+        return videoGameRepository.findAllByCategory(category);
+    }
 }

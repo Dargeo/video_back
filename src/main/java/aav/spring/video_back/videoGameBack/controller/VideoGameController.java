@@ -27,7 +27,7 @@ public class VideoGameController {
     }
 
 
-    @PostMapping({"/add"})
+    @PostMapping({"/"})
     public VideoGame add(@RequestBody VideoGame videoGame){
         return service.add(videoGame);
     }
@@ -50,5 +50,8 @@ public class VideoGameController {
     public VideoGame delete(@PathVariable("id") int id){
         return service.delete(id);
     }
+
+    @GetMapping(path = {"/category/{category}"})
+    public List<VideoGame> findByCategory(@PathVariable("category") String category){return service.listByCategory(category); }
 
 }
