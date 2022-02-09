@@ -22,14 +22,14 @@ public class VideoGameController {
 
     @GetMapping
     public List<VideoGame>list(){
-        System.out.println(service.list());
-        return service.list();
+        System.out.println(service.listVideoGames());
+        return service.listVideoGames();
     }
 
 
     @PostMapping({"/"})
     public VideoGame add(@RequestBody VideoGame videoGame){
-        return service.add(videoGame);
+        return service.saveVideoGame(videoGame);
     }
 
     @GetMapping(path = {"/{id}"})
@@ -42,16 +42,16 @@ public class VideoGameController {
     @PutMapping(path = {"/{id}"})
     public VideoGame edit(@RequestBody VideoGame videoGame, @PathVariable("id") int id) {
         videoGame.setId(id);
-        return service.edit(videoGame);
+        return service.editVideoGame(videoGame);
     }
 
 
     @DeleteMapping(path = {"/{id}"})
     public VideoGame delete(@PathVariable("id") int id){
-        return service.delete(id);
+        return service.deleteVideoGame(id);
     }
 
     @GetMapping(path = {"/category/{category}"})
-    public List<VideoGame> findByCategory(@PathVariable("category") String category){return service.listByCategory(category); }
+    public List<VideoGame> findByCategory(@PathVariable("category") String category){return service.listVideoGamesByCategory(category); }
 
 }

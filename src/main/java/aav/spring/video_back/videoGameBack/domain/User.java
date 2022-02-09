@@ -6,35 +6,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @author Alejandro Arango
  */
 @Entity
-@Table(name = "videogames")
+@Table(name = "users")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
-public class VideoGame {
+public class User {
 
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column
     private String name;
-
     @Column
-    private String description;
-
+    private String username;
     @Column
-    private String imagepath;
-
+    private String email;
     @Column
-    private String category;
+    private String pasword;
 
-    @Column
-    private int price;
 
+    @ManyToMany(fetch = FetchType.EAGER)
     @Column
-    private String pg;
+    private Collection<Role> roles = new ArrayList<>();
 }

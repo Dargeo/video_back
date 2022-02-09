@@ -4,6 +4,8 @@ import aav.spring.video_back.videoGameBack.domain.VideoGame;
 import aav.spring.video_back.videoGameBack.repositories.VideoGameRepository;
 import aav.spring.video_back.videoGameBack.services.VideoGameService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +22,7 @@ public class VideoGameServiceImpl implements VideoGameService {
 
 
     @Override
-    public List<VideoGame> list() {
+    public List<VideoGame> listVideoGames() {
         return videoGameRepository.findAll();
     }
 
@@ -30,17 +32,17 @@ public class VideoGameServiceImpl implements VideoGameService {
     }
 
     @Override
-    public VideoGame add(VideoGame videogame) {
+    public VideoGame saveVideoGame(VideoGame videogame) {
         return videoGameRepository.save(videogame);
     }
 
     @Override
-    public VideoGame edit(VideoGame videogame) {
+    public VideoGame editVideoGame(VideoGame videogame) {
         return videoGameRepository.save(videogame);
     }
 
     @Override
-    public VideoGame delete(int id) {
+    public VideoGame deleteVideoGame(int id) {
         VideoGame videogame = videoGameRepository.findById(id);
         videoGameRepository.delete(videogame);
 
@@ -49,8 +51,14 @@ public class VideoGameServiceImpl implements VideoGameService {
     }
 
     @Override
-    public List<VideoGame> listByCategory(String category) {
+    public List<VideoGame> listVideoGamesByCategory(String category) {
 
         return videoGameRepository.findAllByCategory(category);
+    }
+
+    @Override
+    public Page<VideoGame> listVideoGamesPagination(int offset, int limit) {
+        Page<VideoGame> products = videoGameRepository.findAll(PageRequest.of(offset,limit));
+        return products;
     }
 }

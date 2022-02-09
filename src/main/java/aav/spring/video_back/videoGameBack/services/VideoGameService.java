@@ -1,6 +1,7 @@
 package aav.spring.video_back.videoGameBack.services;
 
 import aav.spring.video_back.videoGameBack.domain.VideoGame;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -9,12 +10,14 @@ import java.util.List;
  */
 
 public interface VideoGameService {
-    List<VideoGame> list();
+    List<VideoGame> listVideoGames();
 
     VideoGame getVideoGame(int id);
 
-    VideoGame add(VideoGame videogame);
-    VideoGame edit(VideoGame videogame);
-    VideoGame delete(int id);
-    List<VideoGame> listByCategory(String category);
+    VideoGame saveVideoGame(VideoGame videogame);
+    VideoGame editVideoGame(VideoGame videogame);
+    VideoGame deleteVideoGame(int id);
+    List<VideoGame> listVideoGamesByCategory(String category);
+    Page<VideoGame> listVideoGamesPagination(int offset, int limit);
+
 }
