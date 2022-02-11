@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import javax.persistence.*;
 
@@ -12,11 +13,12 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "roles")
+@EnableAutoConfiguration
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 
 public class Role {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column
